@@ -50,9 +50,11 @@ jobs:
     steps:
       - name: Commit release branch
         uses: ncipollo/release-action@v1
-          with:
-            tag_name: ${{ github.run_number }}
-            release_name: Release from ${{ github.run_number }}
-            body: New release for ${{ github.sha }}.
-            drfat: false
-            prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.github_token }}
+        with:
+          tag_name: ${{ github.run_number }}
+          release_name: Release from ${{ github.run_number }}
+          body: New release for ${{ github.sha }}.
+          drfat: false
+          prerelease: false
